@@ -67,6 +67,7 @@ class HomePage extends StatelessWidget {
                       "Clock",
                       style: TextStyle(
                         color: Colors.white,
+                        fontWeight: FontWeight.w700,
                         fontSize: 24,
                         fontFamily: "avenir",
                       ),
@@ -89,6 +90,7 @@ class HomePage extends StatelessWidget {
                           formattedDate,
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.w300,
                             fontSize: 20,
                             fontFamily: "avenir",
                           ),
@@ -114,6 +116,7 @@ class HomePage extends StatelessWidget {
                           "Timezone",
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.w500,
                             fontSize: 24,
                             fontFamily: "avenir",
                           ),
