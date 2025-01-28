@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Align(
                       alignment: Alignment.center,
-                      child: ClockView(size: 240),
+                      child: ClockView(size: 260),
                     ),
                   ),
                   Flexible(
