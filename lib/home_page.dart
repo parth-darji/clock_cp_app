@@ -44,11 +44,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          SafeArea(
-            child: VerticalDivider(
-              color: Colors.white24,
-              width: 1,
-            ),
+          VerticalDivider(
+            color: Colors.white24,
+            width: 1,
           ),
           Expanded(
             child: Container(
@@ -59,56 +57,83 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Clock",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontFamily: "avenir",
-                    ),
-                  ),
-                  SizedBox(height: 32),
-                  Text(
-                    formattedTime,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 64,
-                      fontFamily: "avenir",
-                    ),
-                  ),
-                  Text(
-                    formattedDate,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: "avenir",
-                    ),
-                  ),
-                  ClockView(),
-                  Text(
-                    "Timezone",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontFamily: "avenir",
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.language,
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: Text(
+                      "Clock",
+                      style: TextStyle(
                         color: Colors.white,
+                        fontSize: 24,
+                        fontFamily: "avenir",
                       ),
-                      SizedBox(width: 16),
-                      Text(
-                        "UTC$offsetSign$timezoneString",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          formattedTime,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 64,
+                            fontFamily: "avenir",
+                          ),
                         ),
-                      ),
-                    ],
+                        Text(
+                          formattedDate,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: "avenir",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    flex: 6,
+                    fit: FlexFit.tight,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: ClockView(),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Timezone",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontFamily: "avenir",
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.language,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 16),
+                            Text(
+                              "UTC$offsetSign$timezoneString",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

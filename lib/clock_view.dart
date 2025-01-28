@@ -25,8 +25,8 @@ class _ClockViewState extends State<ClockView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
-      height: 300,
+      width: 250,
+      height: 250,
       child: Transform.rotate(
         angle: -pi / 2,
         child: CustomPaint(
@@ -52,7 +52,7 @@ class ClockPainter extends CustomPainter {
 
     var outlineBrush = Paint();
     outlineBrush.color = Color(0xFFEAECFF);
-    outlineBrush.strokeWidth = 16;
+    outlineBrush.strokeWidth = 12;
     outlineBrush.style = PaintingStyle.stroke;
 
     var centerFillBrush = Paint();
@@ -60,7 +60,7 @@ class ClockPainter extends CustomPainter {
 
     var secHandBrush = Paint();
     secHandBrush.color = Colors.orange[300]!;
-    secHandBrush.strokeWidth = 8;
+    secHandBrush.strokeWidth = 4;
     secHandBrush.style = PaintingStyle.stroke;
     secHandBrush.strokeCap = StrokeCap.round;
 
@@ -73,7 +73,7 @@ class ClockPainter extends CustomPainter {
         radius: radius,
       ),
     );
-    minHandBrush.strokeWidth = 16;
+    minHandBrush.strokeWidth = 8;
     minHandBrush.style = PaintingStyle.stroke;
     minHandBrush.strokeCap = StrokeCap.round;
 
@@ -86,7 +86,7 @@ class ClockPainter extends CustomPainter {
         radius: radius,
       ),
     );
-    hourHandBrush.strokeWidth = 16;
+    hourHandBrush.strokeWidth = 12;
     hourHandBrush.style = PaintingStyle.stroke;
     hourHandBrush.strokeCap = StrokeCap.round;
 
