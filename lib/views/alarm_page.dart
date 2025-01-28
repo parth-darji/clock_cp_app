@@ -1,6 +1,10 @@
 import 'package:clock_cp_app/data.dart';
+import 'package:clock_cp_app/main.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 import '../constants/theme_data.dart';
 
@@ -131,7 +135,9 @@ class AlarmPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(24),
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          scheduleAlarm();
+                        },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.symmetric(
                             horizontal: 32,
@@ -163,6 +169,51 @@ class AlarmPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void scheduleAlarm() async {
+    tz.initializeTimeZones();
+    var locations = tz.timeZoneDatabase.locations;
+    debugPrint(locations.length.toString()); // => 429
+    for (var data in locations.keys) {
+      debugPrint(data);
+    }
+
+    final detroit = tz.getLocation('Indian/Antananarivo');
+    var scheduleNotificationDateTime = tz.TZDateTime.now(detroit).add(
+      Duration(seconds: 10),
+    );
+
+    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      "alarm_notif",
+      "alarm_notif",
+      icon: "codex_logo",
+      sound: RawResourceAndroidNotificationSound("a_long_cold_sting"),
+      largeIcon: DrawableResourceAndroidBitmap("codex_logo"),
+    );
+
+    var iosPlatformChannelSpecifics = DarwinNotificationDetails(
+      sound: "a_long_cold_sting.wav",
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+
+    var platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: iosPlatformChannelSpecifics,
+    );
+
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      0,
+      "Office",
+      "Good morning! Time for Office",
+      scheduleNotificationDateTime,
+      platformChannelSpecifics,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.alarmClock,
     );
   }
 }
