@@ -1,6 +1,12 @@
+import 'package:clock_cp_app/menu_info.dart';
 import 'package:clock_cp_app/views/clock_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+import '../constants/theme_data.dart';
+import '../data.dart';
+import '../enums.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,29 +26,13 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color(0xFF2D2F41),
       body: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildMenuButton(
-                  title: "Clock",
-                  image: "assets/clock_icon.png",
-                ),
-                _buildMenuButton(
-                  title: "Alarm",
-                  image: "assets/alarm_icon.png",
-                ),
-                _buildMenuButton(
-                  title: "Timer",
-                  image: "assets/timer_icon.png",
-                ),
-                _buildMenuButton(
-                  title: "Stopwatch",
-                  image: "assets/stopwatch_icon.png",
-                ),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: menuItems
+                .map(
+                  (e) => _buildMenuButton(context, currentMenuInfo: e),
+                )
+                .toList(),
           ),
           SafeArea(
             child: VerticalDivider(
@@ -150,34 +140,52 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuButton({
-    required String title,
-    required String image,
+  Widget _buildMenuButton(
+    BuildContext context, {
+    required MenuInfo currentMenuInfo,
   }) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        backgroundColor: Colors.red,
-        padding: const EdgeInsets.symmetric(
-          vertical: 16,
-        ),
-      ),
-      onPressed: () {},
-      child: Column(
-        children: [
-          Image.asset(
-            image,
-            scale: 1.5,
-          ),
-          SizedBox(height: 16),
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontFamily: "avenir",
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.2,
+      child: Consumer<MenuInfo>(
+        builder: (BuildContext context, MenuInfo value, Widget? child) {
+          return TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: currentMenuInfo.menuType == value.menuType
+                  ? CustomColors.menuBackgroundColor
+                  : Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(32),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 8,
+              ),
             ),
-          ),
-        ],
+            onPressed: () {
+              final menuInfo = Provider.of<MenuInfo>(context, listen: false);
+              menuInfo.update(currentMenuInfo);
+            },
+            child: Column(
+              children: [
+                Image.asset(
+                  currentMenuInfo.imageSource ?? "",
+                  scale: 1.5,
+                ),
+                SizedBox(height: 16),
+                Text(
+                  currentMenuInfo.title ?? "",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontFamily: "avenir",
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
