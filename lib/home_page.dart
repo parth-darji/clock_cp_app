@@ -44,9 +44,11 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          VerticalDivider(
-            color: Colors.white24,
-            width: 1,
+          SafeArea(
+            child: VerticalDivider(
+              color: Colors.white24,
+              width: 1,
+            ),
           ),
           Expanded(
             child: Container(
@@ -57,6 +59,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 20),
                   Flexible(
                     flex: 1,
                     fit: FlexFit.tight,
@@ -98,7 +101,7 @@ class HomePage extends StatelessWidget {
                     fit: FlexFit.tight,
                     child: Align(
                       alignment: Alignment.center,
-                      child: ClockView(),
+                      child: ClockView(size: 240),
                     ),
                   ),
                   Flexible(
