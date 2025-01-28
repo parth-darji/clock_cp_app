@@ -1,4 +1,4 @@
-import 'package:clock_cp_app/clock_view.dart';
+import 'package:clock_cp_app/views/clock_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -154,29 +154,30 @@ class HomePage extends StatelessWidget {
     required String title,
     required String image,
   }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 16,
-      ),
-      child: TextButton(
-        onPressed: () {},
-        child: Column(
-          children: [
-            Image.asset(
-              image,
-              scale: 1.5,
-            ),
-            SizedBox(height: 16),
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontFamily: "avenir",
-              ),
-            ),
-          ],
+    return TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.red,
+        padding: const EdgeInsets.symmetric(
+          vertical: 16,
         ),
+      ),
+      onPressed: () {},
+      child: Column(
+        children: [
+          Image.asset(
+            image,
+            scale: 1.5,
+          ),
+          SizedBox(height: 16),
+          Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontFamily: "avenir",
+            ),
+          ),
+        ],
       ),
     );
   }
