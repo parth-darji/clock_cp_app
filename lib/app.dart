@@ -1,5 +1,5 @@
 import 'package:clock_cp_app/enums.dart';
-import 'package:clock_cp_app/menu_info.dart';
+import 'package:clock_cp_app/models/menu_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'views/home_page.dart';

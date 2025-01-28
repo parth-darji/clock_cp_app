@@ -1,5 +1,7 @@
-import 'package:clock_cp_app/menu_info.dart';
+import 'package:clock_cp_app/models/alarm_info.dart';
+import 'package:clock_cp_app/models/menu_info.dart';
 
+import 'constants/theme_data.dart';
 import 'enums.dart';
 
 List<MenuInfo> menuItems = [
@@ -22,5 +24,24 @@ List<MenuInfo> menuItems = [
     MenuType.stopwatch,
     title: "Stopwatch",
     imageSource: "assets/stopwatch_icon.png",
+  ),
+];
+
+List<AlarmInfo> alarmItems = [
+  AlarmInfo(
+    dateTime: DateTime.now().add(
+      Duration(hours: 1),
+    ),
+    description: "Office",
+    isActive: false,
+    gradientColors: GradientColors.sky,
+  ),
+  AlarmInfo(
+    dateTime: DateTime.now().add(
+      Duration(hours: 2),
+    ),
+    description: "Sports",
+    isActive: false,
+    gradientColors: GradientColors.sunset,
   ),
 ];
