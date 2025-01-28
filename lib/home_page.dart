@@ -25,20 +25,21 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Column(
-                    children: [
-                      FlutterLogo(),
-                      Text(
-                        "Clock",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
+                _buildMenuButton(
+                  title: "Clock",
+                  image: "assets/clock_icon.png",
+                ),
+                _buildMenuButton(
+                  title: "Alarm",
+                  image: "assets/alarm_icon.png",
+                ),
+                _buildMenuButton(
+                  title: "Timer",
+                  image: "assets/timer_icon.png",
+                ),
+                _buildMenuButton(
+                  title: "Stopwatch",
+                  image: "assets/stopwatch_icon.png",
                 ),
               ],
             ),
@@ -63,6 +64,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
+                      fontFamily: "avenir",
                     ),
                   ),
                   SizedBox(height: 32),
@@ -71,6 +73,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 64,
+                      fontFamily: "avenir",
                     ),
                   ),
                   Text(
@@ -78,6 +81,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
+                      fontFamily: "avenir",
                     ),
                   ),
                   ClockView(),
@@ -86,6 +90,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
+                      fontFamily: "avenir",
                     ),
                   ),
                   SizedBox(height: 16),
@@ -110,6 +115,37 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildMenuButton({
+    required String title,
+    required String image,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 16,
+      ),
+      child: TextButton(
+        onPressed: () {},
+        child: Column(
+          children: [
+            Image.asset(
+              image,
+              scale: 1.5,
+            ),
+            SizedBox(height: 16),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontFamily: "avenir",
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
