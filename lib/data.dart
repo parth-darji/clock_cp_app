@@ -2,7 +2,7 @@ import 'package:clock_cp_app/models/alarm_info.dart';
 import 'package:clock_cp_app/models/menu_info.dart';
 
 import 'constants/theme_data.dart';
-import 'enums.dart';
+import 'constants/enums.dart';
 
 List<MenuInfo> menuItems = [
   MenuInfo(

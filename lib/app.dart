@@ -1,4 +1,4 @@
-import 'package:clock_cp_app/enums.dart';
+import 'package:clock_cp_app/constants/enums.dart';
 import 'package:clock_cp_app/models/menu_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

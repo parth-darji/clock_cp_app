@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../constants/theme_data.dart';
 import '../data.dart';
-import '../enums.dart';
+import '../constants/enums.dart';
 import 'clock_page.dart';
 
 class HomePage extends StatelessWidget {
