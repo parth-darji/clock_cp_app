@@ -10,7 +10,5 @@ This Flutter project implements a custom clock using the `CustomPainter` class. 
 
 - Custom clock painted using `CustomPainter`.
 - Real-time updates to the clock.
-- Uses `sqflite` for storing user data (e.g., clock settings).
 - State management with `provider`.
-- Sends notifications with `flutter_local_notifications` based on set times.
 - Smooth UI with real-time clock animation.
