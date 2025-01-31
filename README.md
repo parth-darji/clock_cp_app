@@ -1,16 +1,14 @@
-# clock_cp_app
+# Clock Custom Painter App
 
-A new Flutter project.
+This Flutter project implements a custom clock using the `CustomPainter` class. The clock updates in real-time and provides a seamless user experience with Flutter's rich UI capabilities. The app also integrates `sqflite` for local database storage, `provider` for state management, and `flutter_local_notifications` to send notifications at specific times.
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+![Clock Demo GIF](demo.gif)
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Custom clock painted using `CustomPainter`.
+- Real-time updates to the clock.
+- State management with `provider`.
+- Smooth UI with real-time clock animation.
